@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import { getPosts } from '../api';
 import { Home } from '../pages';
@@ -28,8 +29,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      <Home posts={posts} />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home posts={posts} />} ></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }

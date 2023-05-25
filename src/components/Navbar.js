@@ -1,39 +1,40 @@
+import { NavLink } from 'react-router-dom';
 import styles from '../styles/navbar.module.css';
 
 const Navbar = () => {
   return (
     <div className={styles.nav}>
       <div className={styles.leftDiv}>
-        <a href="/">
+        <NavLink to="/">
           <img
             alt=""
             src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
           />
-        </a>
+        </NavLink>
       </div>
 
       <div className={styles.rightNav}>
         <div className={styles.user}>
-          <a href="/">
+          <NavLink to="/">
             <img
               src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
               alt=""
               className={styles.userDp}
             />
-          </a>
+          </NavLink>
           <span>Ajay</span>
         </div>
 
         <div className={styles.navLinks}>
           <ul>
             <li>
-              <a href="/">Log in</a>
+              <NavLink to="/login">Log in</NavLink>
             </li>
             <li>
-              <a href="/">Log out</a>
+              <NavLink to="/">Log out</NavLink>
             </li>
             <li>
-              <a href="/">Register</a>
+              <NavLink to="/">Register</NavLink>
             </li>
           </ul>
         </div>
