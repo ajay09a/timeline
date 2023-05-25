@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { getPosts } from '../api';
 import { Home } from '../pages';
 import { Loader, Navbar } from './';
+import Login from '../pages/Login';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -33,6 +34,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home posts={posts} />} ></Route>
+          <Route path='/login' element={<Login />} ></Route>
         </Routes>
       </Router>
     </div>
