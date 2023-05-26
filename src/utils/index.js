@@ -10,3 +10,20 @@ export const setItemInLocalStorage = (key, value) => {
 
   localStorage.setItem(key, valueToStore);
 };
+
+
+export const getItemFromLocalStorage = (key) => {
+  if (!key) {
+    return console.error('Can get the value from LS');
+  }
+
+  return localStorage.getItem(key);
+};
+
+export const removeItemFromLocalStorage = (value, key) => {
+  if (!key) {
+    return console.error('Can get the value from LS');
+  }
+
+  localStorage.removeItem(key);
+};
