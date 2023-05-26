@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-
 import styles from '../styles/login.module.css';
-import { useAuth } from '../hooks';
+import { useAuth } from '../hook';
+// import { login } from '../api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoggingIn(true);
-
+    
     if (!email || !password) {
       return toast.warn('Please enter both email and password')
     }
@@ -62,3 +62,4 @@ const Login = () => {
 };
 
 export default Login;
+
