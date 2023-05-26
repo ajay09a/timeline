@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import jwt from 'jwt-decode';
 
 import { AuthContext } from '../providers/AuthProvider';
-import { login as userLogin } from '../api';
+import { login as userLogin} from '../api';
 import {
   setItemInLocalStorage,
   LOCALSTORAGE_TOKEN_KEY,
@@ -51,7 +51,7 @@ export const useProviderAuth = ()=>{
       };
 
       const signup = async (name, email, password, confirmPassword) => {
-        const response = await register(name, email, password, confirmPassword);
+        const response = await signup(name, email, password, confirmPassword);
     
         if (response.success) {
           return {

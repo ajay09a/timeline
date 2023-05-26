@@ -31,15 +31,15 @@ const Navbar = () => {
           <ul>
             {auth.user?
             <li>
-            <NavLink to="/">Log out</NavLink>
+              <NavLink to="/">Log out</NavLink>
             </li>:
             <>
             <li>
-                <NavLink to="/login">Log in</NavLink>
+              <NavLink to="/login">Log in</NavLink>
             </li>
               
             <li>
-              <NavLink to="/">Register</NavLink>
+              <NavLink to="/register">Register</NavLink>
             </li>
             </>}
             
