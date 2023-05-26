@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { useProviderAuth } from "../hook";
 
 const initialState = {
     user: null,
