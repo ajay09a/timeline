@@ -33,10 +33,10 @@ export const getFormBody = (params) => {
 
   for (let property in params) {
     let encodedKey = encodeURIComponent(property); // 'user name' => 'user%20name'
-    let encodedValue = encodeURIComponent(params[property]); // aakash 123 => aakash%2020123
+    let encodedValue = encodeURIComponent(params[property]); // ajay 123 => ajay%2020123
 
     formBody.push(encodedKey + '=' + encodedValue);
   }
 
-  return formBody.join('&'); // 'username=aakash&password=123213'
+  return formBody.join('&'); // 'username=ajay&password=123213'
 };
