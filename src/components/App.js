@@ -1,11 +1,16 @@
 // import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import { Home } from '../pages';
-import { Navbar } from './';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
+import { useAuth } from '../hook';
+import { Home, Login, Signup } from '../pages';
+import { Loader, Navbar } from './';
 
 function App() {
+  const auth = useAuth();
+
+  if (auth.loading) {
+    return <Loader />;
+  }
+
   return (
     <div className="App">
       <Router>

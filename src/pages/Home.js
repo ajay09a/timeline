@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
+
+import { Comment, Loader } from '../components';
 import { getPosts } from '../api';
 import styles from '../styles/home.module.css';
-import PropType from 'prop-types'
-import Comment from '../components/Comment';
-import { Loader } from '../components';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -26,6 +25,7 @@ const Home = () => {
   if (loading) {
     return <Loader />;
   }
+
   return (
     <div className={styles.postsList}>
       {posts.map((post) => (
@@ -58,7 +58,7 @@ const Home = () => {
                   src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png"
                   alt="comments-icon"
                 />
-                <span>2</span>
+                <span>{post.comments.length}</span>
               </div>
             </div>
             <div className={styles.postCommentBox}>
@@ -67,8 +67,8 @@ const Home = () => {
 
             <div className={styles.postCommentsList}>
               {post.comments.map((comment) => (
-                  <Comment comment={comment} />
-                ))}
+                <Comment comment={comment} />
+              ))}
             </div>
           </div>
         </div>
@@ -76,9 +76,5 @@ const Home = () => {
     </div>
   );
 };
-
-Home.propType = {
-  posts: PropType.array.isRequired,
-}
 
 export default Home;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useToasts } from 'react-toast-notifications';
 
 import { useAuth } from '../hook';
 import styles from '../styles/login.module.css';
@@ -11,6 +11,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [signingUp, setSigningUp] = useState('');
+  const { addToast } = useToasts();
   const auth = useAuth();
   const history = useNavigate();
 
@@ -20,12 +21,18 @@ const Signup = () => {
 
     let error = false;
     if (!name || !email || !password || !confirmPassword) {
-      toast.warn('Please fill all the fields');
+      addToast('Please fill all the fields', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
       error = true;
     }
 
     if (password !== confirmPassword) {
-      toast.warn('Make sure password and confirm password matches');
+      addToast('Make sure password and confirm password matches', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
 
       error = true;
     }
@@ -37,12 +44,18 @@ const Signup = () => {
     const response = await auth.signup(name, email, password, confirmPassword);
 
     if (response.success) {
-      history.push('/login');
+      history('/login');
       setSigningUp(false);
 
-      return toast.success('User registered successfully, please login now');
+      return addToast('User registered successfully, please login now', {
+        appearance: 'success',
+        autoDismiss: true,
+      });
     } else {
-      toast.error(response.message);
+      addToast(response.message, {
+        appearance: 'error',
+        autoDismiss: true,
+      });
     }
 
     setSigningUp(false);
